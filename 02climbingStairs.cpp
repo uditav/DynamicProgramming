@@ -1,6 +1,6 @@
 //Climbing Stairs
 
-//Recursion
+//Recursion ...TLE in leetcode
 int climbStairs(int n) {
         if(n==0 || n==1){
             return 1;
@@ -8,7 +8,7 @@ int climbStairs(int n) {
         return climbStairs(n-1)+climbStairs(n-2);
 }
 
-//Memoization
+//Memoization ...TLE in leetcode
 int climbStairs(int n, vector<int>& dp) {
         if(n==0 || n==1){
             return 1;
@@ -23,6 +23,9 @@ int climbStairs(int n){
 
 //Tabulation
 int climbStairs(int n){
+         if (n == 0 || n == 1) {
+            return 1;
+        }
         vector<int> dp(n+1,-1);
         dp[0]=1;
         dp[1]=1;
@@ -34,6 +37,9 @@ int climbStairs(int n){
 
 //Tabulation with space optimization
 int climbStairs(int n){
+        if (n == 0 || n == 1) {
+            return 1;
+        }
         int prev2=1;
         int prev=1;
         for(int i=2;i<=n;i++){
