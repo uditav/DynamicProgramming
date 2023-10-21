@@ -18,7 +18,7 @@ int minimizeCost1(int n, int k, vector<int> &height){
 int minimizeCost(int n, int k, vector<int> &height){
     return minimizeCost1(n-1, k, height);
 }
-TC -> O(N * k)
+TC -> O(2 ^ N)
 SC -> O(N)
   
 //Memoization
