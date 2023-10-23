@@ -55,11 +55,6 @@ TC -> O(N*M)
 SC -> O(N) + O(N*M)
 
 //Tabulation
-
-TC -> O(N*M) + O(M)
-SC -> O(N*M)
-
-//Tabulation with space optimization
 int getMaxPathSum(vector<vector<int>> &matrix)
 {
     int n=matrix.size();
@@ -96,6 +91,51 @@ int getMaxPathSum(vector<vector<int>> &matrix)
     int maxi=-1e9;
     for(int j=0;j<m;j++){
           maxi=max(maxi,dp[n-1][j]);
+    }
+    return maxi;
+}
+TC -> O(N*M) + O(M)
+SC -> O(N*M)
+
+//Tabulation with space optimization
+int getMaxPathSum(vector<vector<int>> &matrix)
+{
+    int n=matrix.size();
+    int m=matrix[0].size();
+
+    vector<int> prev(m,0);
+
+    for(int j=0;j<m;j++){
+        prev[j]=matrix[0][j];
+    }
+
+    for(int i=1;i<n;i++){
+        vector<int> curr(m,0);
+        for (int j = 0; j < m; j++) {
+            int a = matrix[i][j];
+            int b = matrix[i][j] + prev[j];
+            int c = matrix[i][j];
+            if(j-1>=0){
+              a += prev[j-1];
+            }
+            else{
+                a+=-1e9;
+            }
+            if(j+1<m){
+              c += prev[j+1];
+            }
+            else{
+                c+=-1e9;
+            }
+          
+            curr[j] = max(a, max(b, c));
+        }
+        prev=curr;
+    }
+
+    int maxi=-1e9;
+    for(int j=0;j<m;j++){
+          maxi=max(maxi,prev[j]);
     }
     return maxi;
 }
