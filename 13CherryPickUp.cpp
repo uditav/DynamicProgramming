@@ -95,7 +95,9 @@ int maximumChocolates(int n, int m, vector<vector<int>> &grid) {
     }
     return dp[0][0][m-1];
 }
-
+TC -> O(N*M*M) 
+SC -> O(N*M*M) 
+     
 //Tabulation with space optimization
 int maximumChocolates(int n, int m, vector<vector<int>> &grid) {
     vector<vector<int>> front(m, vector<int>(m, 0));
@@ -133,6 +135,7 @@ int maximumChocolates(int n, int m, vector<vector<int>> &grid) {
     }
     return front[0][m-1];
 }
-
+TC -> O(N*M*M) 
+SC -> O(M*M)
 
 
