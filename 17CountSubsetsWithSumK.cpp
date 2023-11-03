@@ -84,3 +84,27 @@ int findWays(vector<int>& arr, int k)
 }
 TC -> O(N * k)
 SC -> O(N)
+
+//1st way of considering zeroes
+return pow(2,n) * ans; where n is the number of zeroes in the array
+
+//2nd way bt changing the base case
+int find(vector<int>&arr, int n, int k){
+	if(n==0){
+    if(arr[0]==0 && k==0) return 2;
+    if(k==0 || k==arr[0]) return 1;
+    return 0;
+  }
+	int notpick=find(arr, n-1, k);
+	int pick=0;
+	if(arr[n]<=k) pick=find(arr, n-1, k-arr[n]);
+	return pick + notpick;
+}
+
+int findWays(vector<int>& arr, int k)
+{
+	int n=arr.size()-1;
+	 return find(arr,n,k);
+}
+
+	
